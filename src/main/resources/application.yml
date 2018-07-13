@@ -1,0 +1,30 @@
+
+
+spring:
+  data:
+    mongodb:
+      database: psiot
+      host: 192.168.1.122
+
+thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: utf-8
+    mode: HTML5
+    content-type: text/html
+    cache: false
+
+
+# mybaits
+#mybatis:
+#    config-location: classpath:mybatis-config.xml
+#    mapper-locations: classpath:mapper/*.xml
+
+# log
+
+# tomcat server port
+server:
+    port: 8080
+
+
+# mail
