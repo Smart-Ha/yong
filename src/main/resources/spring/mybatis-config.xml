@@ -7,7 +7,32 @@
 	<!-- 全局配置 -->
 	<settings>
 		<setting name="cacheEnabled" value="false"/>
+
+		<!-- 数据库字段下划线可自动映射为驼峰
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		-->
+
+		<!-- Allows JDBC support for generated keys. A compatible driver is required.
+        This setting forces generated keys to be used if set to true,
+         as some drivers deny compatibility but still work -->
+		<setting name="useGeneratedKeys" value="true"/>
+
+		<!-- 打印查询语句 -->
+		<setting name="logImpl" value="STDOUT_LOGGING" />
 	</settings>
+
+
+	<!-- typeAliases —— 为一些类定义别名 -->
+	<typeAliases>
+		<typeAlias alias="User" type="com.wangy.entity.User"/>
+
+		<typeAlias alias="integer" type="java.lang.Integer"/>
+		<typeAlias alias="long" type="java.lang.Long"/>
+		<typeAlias alias="string" type="java.lang.String"/>
+
+
+	</typeAliases>
+
 
 	<!-- 插件-->
 	<plugins>

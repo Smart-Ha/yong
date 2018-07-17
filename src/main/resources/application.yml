@@ -1,10 +1,11 @@
 
 
 spring:
-  data:
-    mongodb:
-      database: psiot
-      host: 192.168.1.122
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_yong?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
 
 
 thymeleaf:
@@ -17,15 +18,17 @@ thymeleaf:
 
 
 # mybaits
-#mybatis:
-#    config-location: classpath:mybatis-config.xml
-#    mapper-locations: classpath:mapper/*.xml
+mybatis:
+    config-location: classpath:spring/mybatis-config.xml
+    mapper-locations: classpath:mapper/*.xml
 
 # log
 
 # tomcat server port
 server:
     port: 8080
+logging:
+  level: debug
 
 
 # mail

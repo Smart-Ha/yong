@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * Spring bean 上下文管理
@@ -13,13 +14,18 @@ import java.util.Map;
 public class SpringContextUtil implements ApplicationContextAware {
 
 	private static ApplicationContext context = null;
+	private static Properties properties = new Properties();
 
 	private SpringContextUtil() {
 		super();
 	}
 
+    public static void addProperties(Properties props) {
+		properties.putAll(props);
+    }
 
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		context = applicationContext;
 	}
 
