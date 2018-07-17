@@ -6,7 +6,7 @@ import com.wangy.upms.shiro.UpmsSessionDao;
 import com.wangy.utils.PropertiesFileUtil;
 import com.wangy.utils.RedisUtil;
 import com.wangy.utils.RequestParameterUtil;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;

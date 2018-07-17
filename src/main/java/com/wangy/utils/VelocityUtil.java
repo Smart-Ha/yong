@@ -1,7 +1,6 @@
 package com.wangy.utils;
 
 import org.apache.commons.io.output.FileWriterWithEncoding;
-import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
@@ -46,7 +45,7 @@ public class VelocityUtil {
 	 */
 	public static String getPath(String filePath) {
 		String path = "";
-		if (StringUtils.isNotBlank(filePath)) {
+		if (StringUtil.isNotEmpty(filePath)) {
 			path = filePath.substring(0, filePath.lastIndexOf("/") + 1);
 		}
 		return path;
@@ -59,7 +58,7 @@ public class VelocityUtil {
 	 */
 	public static String getFile(String filePath) {
 		String file = "";
-		if (StringUtils.isNotBlank(filePath)) {
+		if (StringUtil.isNotEmpty(filePath)) {
 			file = filePath.substring(filePath.lastIndexOf("/") + 1);
 		}
 		return file;

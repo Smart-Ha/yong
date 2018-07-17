@@ -20,8 +20,7 @@ public class IndexController extends BaseController {
 
     @ApiOperation(value = "首页")
     @RequestMapping(value = {"","/"}, method = RequestMethod.GET)
-    public String index(HttpServletRequest request) {
-        ModelMap model = new ModelMap();
+    public String index(Model model) {
         model.addAttribute("message","hello,world");
         return "index";
     }

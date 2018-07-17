@@ -3,7 +3,7 @@ package com.wangy.upms.shiro;
 import com.wangy.constant.UpmsConstant;
 import com.wangy.utils.RedisUtil;
 import com.wangy.utils.SerializableUtil;
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.ValidatingSession;
 import org.apache.shiro.session.mgt.eis.CachingSessionDAO;
