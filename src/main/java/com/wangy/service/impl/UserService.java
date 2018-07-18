@@ -24,4 +24,14 @@ public class UserService implements IUserService {
     public User update(User user) {
         return null;
     }
+
+    @Override
+    public User findByUsername(String username) {
+        return userMapper.selectByUserName(username);
+    }
+
+    @Override
+    public User login(String username, String password) {
+        return null;
+    }
 }

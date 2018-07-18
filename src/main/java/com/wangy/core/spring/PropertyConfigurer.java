@@ -1,4 +1,4 @@
-package com.wangy.core;
+package com.wangy.core.spring;
 
 import java.util.Properties;
 

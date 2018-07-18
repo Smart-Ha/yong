@@ -27,8 +27,10 @@ mybatis:
 # tomcat server port
 server:
     port: 8080
+
 logging:
-  level: debug
+  level:
+    com.wangy: debug
 
 
 # mail
