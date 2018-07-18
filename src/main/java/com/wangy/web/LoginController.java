@@ -38,7 +38,7 @@ public class LoginController extends BaseController {
         } catch (AuthenticationException e) {
             e.printStackTrace();
         }
-        return "message";
+        return "index";
     }
 
 

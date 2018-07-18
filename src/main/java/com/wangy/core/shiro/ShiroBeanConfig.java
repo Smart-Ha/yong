@@ -3,6 +3,8 @@ package com.wangy.core.shiro;
 import com.wangy.core.spring.SpringCacheManagerWrapper;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.cache.CacheManager;
+import org.apache.shiro.mgt.AuthenticatingSecurityManager;
+import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.mgt.SessionFactory;
 import org.apache.shiro.session.mgt.SessionManager;
@@ -44,8 +46,8 @@ public class ShiroBeanConfig implements ApplicationContextAware {
      * @return
      */
     @Bean
-    public DefaultWebSecurityManager securityManager(){
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+    public AuthenticatingSecurityManager securityManager(){
+        AuthenticatingSecurityManager securityManager = new DefaultSecurityManager();
         securityManager.setRealm(userRealm());
         SecurityUtils.setSecurityManager(securityManager);
         return  securityManager;

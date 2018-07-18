@@ -28,10 +28,14 @@ public class UserRealm extends AuthorizingRealm {
 
     private static final Logger log = LoggerFactory.getLogger(UserRealm.class);
 
+    @Override
+    public String getName() {
+        return "LoginRealm";
+    }
 
     /**
      * 授权：验证权限时调用
-     * @param principalCollection
+     * @param principals
      * @return
      */
     @Override
@@ -117,7 +121,7 @@ public class UserRealm extends AuthorizingRealm {
             throw new AuthenticationException(new UserException("user.unknown.error", null));
         }
 
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUsername(), password.toCharArray(), getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUsername(), password, getName());
         return info;
     }
 
