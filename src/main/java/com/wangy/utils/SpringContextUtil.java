@@ -24,6 +24,10 @@ public class SpringContextUtil implements ApplicationContextAware {
 		properties.putAll(props);
     }
 
+    public static String getProperty(String name) {
+		return properties.getProperty(name);
+    }
+
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		context = applicationContext;

@@ -166,4 +166,11 @@ public class StringUtil {
         }
     }
 
+    public static long strToLong(String str){
+        return Long.parseLong(str);
+    }
+
+    public static int strToInt(String str){
+        return Integer.parseInt(str);
+    }
 }
