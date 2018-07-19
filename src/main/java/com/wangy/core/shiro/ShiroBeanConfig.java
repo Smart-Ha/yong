@@ -58,8 +58,10 @@ public class ShiroBeanConfig implements ApplicationContextAware {
      */
     @Bean
     public AuthenticatingSecurityManager securityManager(){
-        AuthenticatingSecurityManager securityManager = new DefaultSecurityManager();
+        AuthenticatingSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(userRealm());
+        ((DefaultWebSecurityManager) securityManager).setSessionManager(sessionManager());
+        securityManager.setCacheManager(shiroCacheManager());
         SecurityUtils.setSecurityManager(securityManager);
         return  securityManager;
     }
@@ -78,6 +80,7 @@ public class ShiroBeanConfig implements ApplicationContextAware {
         ((OnlineWebSessionManager) sessionManager).setCacheManager(shiroCacheManager());
         ((OnlineWebSessionManager) sessionManager).setSessionIdCookieEnabled(true);
         ((OnlineWebSessionManager) sessionManager).setSessionIdCookie(sessionIdCookie());
+        ((OnlineWebSessionManager) sessionManager).setGlobalSessionTimeout(StringUtil.strToLong(SpringContextUtil.getProperty("shiro.session.globalSessionTimeout")));
 //        ((OnlineWebSessionManager) sessionManager).setSessionValidationSchedulerEnabled(true);
 //        ((OnlineWebSessionManager) sessionManager).setSessionValidationScheduler(sessionValidationScheduler());
         return sessionManager;
@@ -121,7 +124,7 @@ public class ShiroBeanConfig implements ApplicationContextAware {
     public SessionDAO onlineSessionDAO(){
         OnlineSessionDAO onlineSessionDAO = new OnlineSessionDAO();
         onlineSessionDAO.setSessionIdGenerator(sessionIdGenerator());
-        onlineSessionDAO.setActiveSessionsCacheName("shiro.active.session.cacheName");
+        onlineSessionDAO.setActiveSessionsCacheName(SpringContextUtil.getProperty("shiro.active.session.cacheName"));
         return  onlineSessionDAO;
     }
 
@@ -169,11 +172,11 @@ public class ShiroBeanConfig implements ApplicationContextAware {
     @Bean
     public Cookie sessionIdCookie(){
         Cookie cookie = new SimpleCookie();
-        cookie.setName(SpringContextUtil.getProperty("shiro.uid.cookie.name"));
+        cookie.setName(SpringContextUtil.getProperty("shiro.uid.cookie.name"));//设置Cookie名字，默认为JSESSIONID；
         cookie.setDomain(SpringContextUtil.getProperty("shiro.uid.cookie.domain"));
         cookie.setHttpOnly(true);
-        cookie.setMaxAge(-1);
-        cookie.setPath(SpringContextUtil.getProperty("shiro.uid.cookie.path"));
+        cookie.setMaxAge(-1);//设置Cookie的过期时间，秒为单位，默认-1表示关闭浏览器时过期Cookie；
+        cookie.setPath(SpringContextUtil.getProperty("shiro.uid.cookie.path"));//如果设置为true，则客户端不会暴露给客户端脚本代码，使用HttpOnly cookie有助于减少某些类型的跨站点脚本攻击；
         return cookie;
     }
 
