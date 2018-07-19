@@ -3,14 +3,14 @@ package com.wangy;
 import com.wangy.utils.SpringContextUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
-import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.context.annotation.ImportResource;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-@SpringBootApplication(exclude = {MongoAutoConfiguration.class,MongoDataAutoConfiguration.class})
+@SpringBootApplication
+@ImportResource(locations={"classpath:spring/kaptcha.xml"})
 public class YongApplication {
 
 	public static void main(String[] args) {

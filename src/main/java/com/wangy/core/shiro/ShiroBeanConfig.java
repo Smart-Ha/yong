@@ -50,6 +50,12 @@ public class ShiroBeanConfig implements ApplicationContextAware {
     @Bean
     public AuthorizingRealm userRealm(){
         AuthorizingRealm realm =  new UserRealm();
+        realm.setCachingEnabled(true);//启用缓存，默认false；
+        realm.setAuthorizationCachingEnabled(true);//启用身份验证缓存，即缓存AuthenticationInfo信息，默认false
+        realm.setAuthorizationCacheName("loginRecordCache");
+        realm.setAuthenticationCachingEnabled(true);//启用授权缓存，即缓存AuthorizationInfo信息，默认false
+        realm.setAuthenticationCacheName("sys-authCache");
+
         return  realm;
     }
     /**

@@ -33,13 +33,18 @@ public class MD5Util {
                 str[k++] = md5String[byte0 >>> 4 & 0xf];    //    5
                 str[k++] = md5String[byte0 & 0xf];   //   F
             }
-
             //返回经过加密后的字符串
             return new String(str);
 
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public static void main(String[] args) {
+        String abc = "asdasd";
+        abc.toUpperCase();
+        System.out.println(md5("abc123"));
     }
 
 }
