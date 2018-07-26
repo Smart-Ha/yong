@@ -10,7 +10,7 @@ import java.util.List;
 public interface BaseMapper<T,ID> {
     T selectByPrimaryKey(ID id);
     List<T> selectByCondition(T condition);
-    void insert(T entity);
+    T insert(T entity);
     int update(T newEntity);
     int deleteByPrimaryKey(ID id);
     long countByCondition(T condition);

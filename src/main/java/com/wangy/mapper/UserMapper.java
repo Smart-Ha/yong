@@ -12,4 +12,6 @@ import java.util.List;
 public interface UserMapper  extends BaseMapper<User,Long>{
 
     User selectByUserName(@Param("loginname")String loginname);
+
+    int updatePassword(Long userId, String newPass);
 }

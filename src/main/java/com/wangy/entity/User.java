@@ -76,4 +76,11 @@ public class User extends BaseObject {
      */
     private Byte locked;
 
+
+    /**
+     * 新的密码
+     */
+    private String newPass;
+
+    private String confirmPass;
 }

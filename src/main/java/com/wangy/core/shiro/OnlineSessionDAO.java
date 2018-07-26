@@ -5,7 +5,7 @@
  */
 package com.wangy.core.shiro;
 
-import com.wangy.config.Constants;
+import com.wangy.constant.Constants;
 import com.wangy.entity.UserOnline;
 import com.wangy.service.IUserOnlineService;
 import org.apache.shiro.session.Session;

@@ -17,5 +17,5 @@ function getDate(type) {
 }
 
 function change() {
-    $("#vCode").attr("src","/vcode?a=" + new Date().getTime());
+    $("#vCode").attr("src","/verifyCode?a=" + new Date().getTime());
 }

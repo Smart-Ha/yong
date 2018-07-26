@@ -1,5 +1,6 @@
 package com.wangy.core.shiro;
 
+import com.wangy.constant.UserConstant;
 import com.wangy.entity.User;
 import com.wangy.exception.*;
 import com.wangy.service.IUserAuthService;
@@ -106,18 +107,17 @@ public class UserRealm extends AuthorizingRealm {
 
         User user = null;
         try {
-            user = userService.findByUsername(username);
-        } catch (UserNotExistsException e) {
-            throw new UnknownAccountException(e.getMessage(), e);
-        } catch (UserPasswordNotMatchException e) {
-            throw new AuthenticationException(e.getMessage(), e);
-        } catch (UserPasswordRetryLimitExceedException e) {
-            throw new ExcessiveAttemptsException(e.getMessage(), e);
-        } catch (UserBlockedException e) {
-            throw new LockedAccountException(e.getMessage(), e);
-        } catch (Exception e) {
-            log.error("login error", e);
-            throw new AuthenticationException(new UserException("user.unknown.error", null));
+            user = userService.login(username, password);
+
+        } catch (UserException e) {
+            if (UserConstant.INVALID_USERNAME.toString().equals(e.getCode())) {
+                throw new UnknownAccountException(e.getMessage(), e);
+            } else if (UserConstant.INVALID_PASSWORD.toString().equals(e.getCode())) {
+                throw new AuthenticationException(e.getMessage(), e);
+            } else if (UserConstant.ACCOUNT_LOCKED.toString().equals(e.getCode())) {
+                throw new LockedAccountException(e.getMessage(), e);
+            }
+
         }
 
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUsername(), password, getName());

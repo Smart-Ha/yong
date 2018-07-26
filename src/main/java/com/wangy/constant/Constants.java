@@ -1,6 +1,16 @@
-package com.wangy.core.domain;
+package com.wangy.constant;
 
 public class Constants {
+
+    /**
+     * 用户模块
+     */
+    public static final String MODULE_USER = "user-module";
+    public static final byte USER_LOCKED = 1;
+    public static final byte USER_UNLOCK = 0;
+
+    public static final String ERROR = "error";
+    public static final String MESSAGE = "message";
 
     /**
      * 上个页面地址
